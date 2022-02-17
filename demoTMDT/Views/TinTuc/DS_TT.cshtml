@@ -1,0 +1,38 @@
+﻿@model IEnumerable<demoTMDT.Models.TinTuc>
+
+@{
+    ViewBag.Title = "DS_TT";
+    Layout = "~/Views/Shared/DSTT.cshtml";
+}
+
+
+
+<style>
+    table, tr, td{
+        border: none;
+    }
+    
+</style>
+
+    <table class="table">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td rowspan="2" style="width:410px">
+                    <a href="@Url.Action("CT_TT","TinTuc", new { id = item.IdTinTuc })"> <img src="@Url.Content(item.HinhAnh)" style="width:400px; height:150px" /></a>
+                </td>
+                <td style="font-size:24px">
+                    @Html.DisplayFor(modelItem => item.TieuDe)
+                </td>
+
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayDang)
+                </td>
+            </tr>
+
+        }
+
+    </table>

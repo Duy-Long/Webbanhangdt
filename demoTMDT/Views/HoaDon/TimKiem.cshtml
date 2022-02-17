@@ -1,0 +1,136 @@
+﻿@model IEnumerable<demoTMDT.Models.HoaDon>
+
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<<link href="~/Content/Customer/Bill.css" rel="stylesheet" />
+
+<style>
+    .container-1 input#search {
+        width: 220px;
+        height: 30px;
+        background: #ffffff;
+        border: solid;
+        font-size: 10pt;
+        float: left;
+        color: #63717f;
+        padding-left: 45px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container2">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="support-information">
+                <h2>Tra Cứu</h2>
+
+                <div class="container-1">
+                    @using (Html.BeginForm("TimKiem", "HoaDon"))
+                    {
+                        <input type="text" placeholder="tìm kiếm" name="_name" id="search" />
+                        <input type="submit" value="Tìm" style="height:30px" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            <div class="container my-5">
+                <div class="row">
+                    <div class="cart">
+                        <div class="body-cart" style="padding:15px; background-color: white;">
+                            <div class="billing-information">
+                                <h5>Thông tin Đơn Hàng</h5>
+
+                                @foreach (var item in Model)
+                                {
+                                <ul>
+                                    <li class="d-flex" style="justify-content:space-between;">
+                                        <div class="d-flex">
+                                            <h3>Tên:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.TenKH)</span>
+                                        </div>
+                                        <div class="d-flex">
+                                            <h3>Ngày Mua:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.PhieuMua.NgayMua)</span>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Địa chỉ:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.PhieuMua.DiaChi)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Email:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.PhieuMua.Email)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Số Điện Thoại:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.PhieuMua.SĐT)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Mã Khuyến Mãi:</h3>
+                                            <span>@Html.DisplayFor(Modelitem => item.PhieuMua.KhuyenMai)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Hình thức thanh toán:</h3>
+                                            <span>@Html.DisplayFor(ModelItem => item.PhieuMua.HThuc)</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex">
+                                            <h3>Tình Trạng đơn:</h3>
+                                            <span>@Html.DisplayFor(ModelItem => item.PhieuMua.TinhTrang)</span>
+                                        </div>
+                                    </li>
+
+                                </ul>
+
+
+                                    <div class="order-review">
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <th>Sản phẩm</th>
+                                                    <th>Số Lượng</th>
+                                                    <th>Tổng</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>@Html.DisplayFor(Modelitem => item.TenDT)</td>
+                                                    <td>@Html.DisplayFor(Modelitem => item.SoLuong)</td>
+                                                    <td style="color: #e10c00;">@Html.DisplayFor(Modelitem => item.Gia)</td>
+                                                </tr>
+
+                                            </tbody>
+                                            <tfoot>
+                                                <tr></tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                }
+                                <div class="payments">
+                                    <a href="@Url.Action("Index","ListDT")" class="btn btn-primary">Trở Về</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>

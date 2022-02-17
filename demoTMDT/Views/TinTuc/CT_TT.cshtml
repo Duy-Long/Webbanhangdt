@@ -1,0 +1,32 @@
+﻿@model demoTMDT.Models.TinTuc
+
+@{
+    ViewBag.Title = "CT_TT";
+    Layout = "~/Views/Shared/DSTT.cshtml";
+}
+
+
+
+<table>
+    <tr >
+        <td style="text-align:center; font-size:36px"> @Html.DisplayFor(model => model.TieuDe)</td>
+    
+    </tr>
+    <tr>
+        <td style="text-align:center">
+            <img src="@Url.Content(Model.HinhAnh)" style="width:1175px; height:400px;" />
+        </td>
+    </tr>
+    <tr>
+        <td style="font-size:20px">
+            <strong>
+                @Html.DisplayFor(model => model.NoiDung)
+            </strong>
+        </td>
+        
+    </tr>
+</table>
+    
+
+        
+

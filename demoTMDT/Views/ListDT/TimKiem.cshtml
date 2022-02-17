@@ -1,0 +1,59 @@
+﻿@model IEnumerable<demoTMDT.Models.DienThoai>
+
+@{
+    ViewBag.Title = "TimKiem";
+    Layout = "~/Views/Shared/DSDT.cshtml";
+}
+
+<style>
+    .container-1 input#search {
+        width: 220px;
+        height: 30px;
+        background: #ffffff;
+        border: solid;
+        font-size: 10pt;
+        float: left;
+        color: #63717f;
+        padding-left: 45px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container-1">
+    @using (Html.BeginForm("TimKiem", "ListDT"))
+    {
+        <input type="text" placeholder="tìm kiếm" name="_name" id="search" />
+        <input type="submit" value="Tìm" style="height:30px" />
+    }
+
+    <div style="padding:5px" >
+        @{Html.RenderAction("HangPartial", "Hang"); }
+    </div>
+
+</div>
+
+
+@foreach (var pro in Model)
+{
+    <div class="col-md-3 reset-size">
+        <div class="product-items">
+            <a href="@Url.Action("CT_SP", "ListDT", new { id = pro.IdDT })">
+
+                <div class="img-product">
+                    <img src="@Url.Content(pro.hinh1)" />
+
+                </div>
+
+
+                <div class="product-infomation">
+
+                    <p class="reset-size">@Html.DisplayFor(Model => pro.TenDT)</p>
+                    <span>@Html.DisplayFor(Model => pro.Gia)đ</span>
+                </div>
+            </a>
+        </div>
+    </div>
+}
+
